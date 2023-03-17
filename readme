@@ -1,0 +1,14 @@
+
+# droplet types, edit in the .tf file
+s-1vcpu-1gb
+g-2vcpu-8gb
+
+# make the plan
+terraform plan -var-file="config.tfvars" -out=infra.out
+
+# do it
+terraform apply infra.out 
+
+# Destroy it all, careful with this
+# terraform destroy -var-file="config.tfvars"
+
