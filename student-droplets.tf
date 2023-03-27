@@ -1,12 +1,12 @@
 
 
 resource "digitalocean_droplet" "student" {
-  count = 2
+  count = 6
   image = "ubuntu-22-04-x64"
-  name = "student-${count.index}"
-  region = "nyc3"
+  name = "student-00${count.index}"
+  region = "sfo3"
   size = "s-1vcpu-1gb"
-  vpc_uuid = digitalocean_vpc.tklft.id
+  vpc_uuid = digitalocean_vpc.lft458.id
   ssh_keys = [
     data.digitalocean_ssh_key.terraform.id
   ]
@@ -37,3 +37,10 @@ output "droplet_ip_addresses" {
     droplet.name => droplet.ipv4_address
   }
 }
+output "droplet_ip_addresses_private" {
+  value = {
+    for droplet in digitalocean_droplet.student:
+    droplet.name => droplet.ipv4_address_private
+  }
+}
+
