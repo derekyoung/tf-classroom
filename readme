@@ -1,3 +1,9 @@
+# initial setup:
+1/ createprivate key and convert to PEM
+ssh-keygen -t rsa
+openssl rsa -in ssh_private_key -outform PEM pemfile.pem
+upload prbulic key to DO
+use putty tool to convert to ppk
 
 # droplet types, edit in the .tf file
 s-1vcpu-1gb
